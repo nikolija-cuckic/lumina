@@ -33,3 +33,5 @@ Thumbs.db
 
 # Osim README.md
 !README.md
+
+node_modules/
