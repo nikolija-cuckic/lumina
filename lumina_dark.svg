@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80" width="280" height="80">
+  <defs>
+    <linearGradient id="band95d" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#5BA4F5" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#5BA4F5" stop-opacity="0.25"/>
+    </linearGradient>
+    <linearGradient id="band80d" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#5BA4F5" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#5BA4F5" stop-opacity="0.45"/>
+    </linearGradient>
+    <linearGradient id="band60d" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#5BA4F5" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#5BA4F5" stop-opacity="0.65"/>
+    </linearGradient>
+    <linearGradient id="meanLined" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#5BA4F5" stop-opacity="0"/>
+      <stop offset="30%"  stop-color="#5BA4F5" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#8FC5FF" stop-opacity="0.7"/>
+    </linearGradient>
+    <filter id="glowD">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="sourceGlowD">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="textGlowD">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#5BA4F5" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Dark background -->
+  <rect x="0" y="0" width="280" height="80" rx="0" fill="#0F1C35"/>
+
+  <!-- Subtle noise texture overlay via pattern -->
+  <rect x="0" y="0" width="280" height="80" fill="#1a2d52" opacity="0.3"/>
+
+  <!-- CI bands — glowing on dark -->
+  <path d="M 8,40 Q 22,40 36,18" stroke="url(#band95d)" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <path d="M 8,40 Q 22,40 36,62" stroke="url(#band95d)" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+  <path d="M 8,40 Q 22,40 36,24" stroke="url(#band80d)" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+  <path d="M 8,40 Q 22,40 36,56" stroke="url(#band80d)" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+
+  <path d="M 8,40 Q 22,40 36,30" stroke="url(#band60d)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M 8,40 Q 22,40 36,50" stroke="url(#band60d)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Mean line — bright on dark -->
+  <path d="M 8,40 Q 22,40 54,40"
+        stroke="url(#meanLined)"
+        stroke-width="2.5"
+        fill="none"
+        stroke-linecap="round"
+        filter="url(#glowD)"/>
+
+  <!-- Source point — brighter glow on dark -->
+  <circle cx="8" cy="40" r="5" fill="#2E6BE6" filter="url(#sourceGlowD)"/>
+  <circle cx="8" cy="40" r="2.5" fill="#ffffff"/>
+
+  <!-- Observed points -->
+  <circle cx="22" cy="40" r="2.2" fill="#0F1C35" stroke="#5BA4F5" stroke-width="1.5"/>
+  <circle cx="36" cy="40" r="2.2" fill="#0F1C35" stroke="#8FC5FF" stroke-width="1.5"/>
+
+  <!-- Prism line -->
+  <line x1="54" y1="18" x2="54" y2="62"
+        stroke="#5BA4F5" stroke-width="0.75"
+        stroke-opacity="0.3" stroke-dasharray="2,3"/>
+
+  <!-- Wordmark — white -->
+  <text
+    x="64" y="51"
+    font-family="'DM Sans', 'Helvetica Neue', Helvetica, sans-serif"
+    font-size="28"
+    font-weight="500"
+    letter-spacing="-0.5"
+    fill="#FFFFFF"
+    filter="url(#textGlowD)"
+  >Lumina</text>
+
+  <!-- Tagline — muted blue-white -->
+  <text
+    x="65" y="64"
+    font-family="'IBM Plex Mono', 'Courier New', monospace"
+    font-size="7.5"
+    font-weight="400"
+    letter-spacing="1.8"
+    fill="#5BA4F5"
+    opacity="0.75"
+  >CLARITY THROUGH UNCERTAINTY</text>
+
+  <!-- Accent line -->
+  <line x1="65" y1="68" x2="195" y2="68"
+        stroke="#5BA4F5" stroke-width="0.5" stroke-opacity="0.25"/>
+
+</svg>

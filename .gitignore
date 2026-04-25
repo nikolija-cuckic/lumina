@@ -1,0 +1,35 @@
+# Python
+.idea/
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtuelno okruženje
+.venv/
+venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+data/raw/
+data/processed/
+
+# Generisani rezultati (reproducibilni iz experiments/)
+results/figures/
+results/tables/
+
+# Alati i konfiguracija
+.claude/
+*.docx
+*.txt
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Ignoriši sve .md fajlove
+*.md
+
+# Osim README.md
+!README.md

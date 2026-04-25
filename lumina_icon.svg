@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <defs>
+    <linearGradient id="band95" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C8DCFA" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#C8DCFA" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="band80" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#AECBF7" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#AECBF7" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="band60" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8FB8F4" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#8FB8F4" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="meanLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#2E6BE6" stop-opacity="0"/>
+      <stop offset="25%"  stop-color="#2E6BE6" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#5BA4F5" stop-opacity="0.7"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1.2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="sourceGlow">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background pill -->
+  <rect x="0" y="0" width="48" height="48" rx="12"
+        fill="#FAFBFF"/>
+  <rect x="0" y="0" width="48" height="48" rx="12"
+        fill="none" stroke="#2E6BE6" stroke-width="0.75" stroke-opacity="0.15"/>
+
+  <!-- CI band 95% -->
+  <path d="M 7,24 Q 20,24 38,10" stroke="url(#band95)" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M 7,24 Q 20,24 38,38" stroke="url(#band95)" stroke-width="5" fill="none" stroke-linecap="round"/>
+
+  <!-- CI band 80% -->
+  <path d="M 7,24 Q 20,24 38,15" stroke="url(#band80)" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M 7,24 Q 20,24 38,33" stroke="url(#band80)" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- CI band 60% -->
+  <path d="M 7,24 Q 20,24 38,19" stroke="url(#band60)" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M 7,24 Q 20,24 38,29" stroke="url(#band60)" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- Mean line -->
+  <path d="M 7,24 Q 20,24 40,24"
+        stroke="url(#meanLine)"
+        stroke-width="2"
+        fill="none"
+        stroke-linecap="round"
+        filter="url(#glow)"/>
+
+  <!-- Source point -->
+  <circle cx="7" cy="24" r="4" fill="#2E6BE6" filter="url(#sourceGlow)"/>
+  <circle cx="7" cy="24" r="2" fill="#ffffff"/>
+
+  <!-- Observed points -->
+  <circle cx="18" cy="24" r="2.2" fill="white" stroke="#2E6BE6" stroke-width="1.5"/>
+  <circle cx="29" cy="24" r="2.2" fill="white" stroke="#5BA4F5" stroke-width="1.5"/>
+
+  <!-- Prism line -->
+  <line x1="40" y1="11" x2="40" y2="37"
+        stroke="#2E6BE6" stroke-width="0.75"
+        stroke-opacity="0.2" stroke-dasharray="2,2.5"/>
+
+</svg>
