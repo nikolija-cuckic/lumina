@@ -1,3 +1,7 @@
+from typing import Literal
+from pydantic import BaseModel, Field
+
+from .base import CIBand, TumorParameters
 
 class Timepoint(BaseModel):
     """

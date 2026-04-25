@@ -5,12 +5,14 @@ Separates inference logic from API routing.
 """
 
 import io
+import os
 import numpy as np
+import pandas as pd
 import nibabel as nib
 import torch
 from pathlib import Path
 
-from models.bbinn import BBINN
+from model.models.bbinn import BBINN
 
 
 VOXEL_TO_CM3 = 1e-3   # 1 mm³ = 0.001 cm³
@@ -92,3 +94,37 @@ def build_features(times: np.ndarray, volumes: np.ndarray) -> np.ndarray:
         len(times) / 20.0,            # sequence length, normalized
         float(times.max()) / MAX_WEEK,# follow-up duration, normalized
     ], dtype=np.float32)
+
+def _load_demo_patients(
+    csv_path: str = "backend/app/data/processed/tumor_volumes_clean.csv",
+) -> dict:
+    if not os.path.exists(csv_path):
+        print(f"[WARN] Demo CSV nije pronadjen: {csv_path}")
+        return {}
+
+    df     = pd.read_csv(csv_path).sort_values(["patient", "week_normalized"])
+    counts = df.groupby("patient")["week_normalized"].count()
+
+    # Bira pacijente sa >= 4 merenja, sortira po broju merenja — više = bolji demo
+    valid  = counts[counts >= 4].sort_values(ascending=False).index[:6]
+
+    result = {}
+    for pid in valid:
+        group = df[df["patient"] == pid].sort_values("week_normalized")
+
+        # Ako CSV ima originalne (nenormalizovane) kolone, koristimo njih za prikaz
+        week_col   = "week"       if "week"       in df.columns else "week_normalized"
+        volume_col = "volume_cm3" if "volume_cm3" in df.columns else "volume_normalized"
+
+        result[str(pid)] = {
+            "history": [
+                {
+                    "week":   round(float(row[week_col]),   2),
+                    "volume": round(float(row[volume_col]), 4),
+                }
+                for _, row in group.iterrows()
+            ]
+        }
+
+    print(f"[OK] Ucitano {len(result)} demo pacijenata")
+    return result

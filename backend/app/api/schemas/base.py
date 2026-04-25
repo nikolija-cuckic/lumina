@@ -1,3 +1,5 @@
+from pydantic import BaseModel, Field
+
 class CIBand(BaseModel):
     """Lower and upper bound for a single CI level."""
     lower: float = Field(..., description="Lower confidence bound (cm³)")

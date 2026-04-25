@@ -1,3 +1,6 @@
+from pydantic import BaseModel, Field, field_validator
+
+from .base import Measurement
 
 class FeaturePredictRequest(BaseModel):
     """

@@ -2,7 +2,7 @@ import torch
 import torch.nn
 from torch import nn
 
-from models.ode import solve_patient
+from .ode import solve_patient
 
 class BBINN(nn.Module):
     def __init__(self, hidden_size=32, dropout_p=0.1):

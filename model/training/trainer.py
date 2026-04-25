@@ -3,8 +3,8 @@ import numpy as np
 import csv
 import os
 
-from models.binn import BINN
-from models.loss import BINNLoss
+from models.bbinn import BBINN
+from models.loss import BBINNLoss
 from dataset.dataset import get_patient_data
 
 
@@ -12,8 +12,8 @@ def train(df, patients, config, save_path, log_path):
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     print(device)
 
-    model     = BINN(hidden_size=config["hidden_size"], dropout_p=config["dropout_p"]).to(device)
-    criterion = BINNLoss(biology_weight=config["biology_weight"])
+    model     = BBINN(hidden_size=config["hidden_size"], dropout_p=config["dropout_p"]).to(device)
+    criterion = BBINNLoss(biology_weight=config["biology_weight"])
     optimizer = torch.optim.Adam(model.parameters(), lr=config["lr"], weight_decay=1e-4)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, patience=20, factor=0.5)
 

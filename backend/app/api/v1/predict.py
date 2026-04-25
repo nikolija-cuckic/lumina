@@ -1,3 +1,12 @@
+import json
+from typing import Annotated
+
+from fastapi import APIRouter, Depends, File, HTTPException, UploadFile
+
+from backend.app.api.schemas import PredictionResponse
+from backend.app.container import get_prediction_service
+from backend.app.services.prediction_service import PredictionService
+
 router = APIRouter(prefix="/predict", tags=["predict"])
 
 

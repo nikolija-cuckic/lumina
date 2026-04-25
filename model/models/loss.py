@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 
-class BINNLoss(nn.Module):
+class BBINNLoss(nn.Module):
     def __init__(self, biology_weight=0.01):
         super().__init__()
         self.biology_weight = biology_weight

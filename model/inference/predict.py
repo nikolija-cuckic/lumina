@@ -3,7 +3,7 @@ import torch
 import pandas as pd
 import os
 
-from models.binn import BINN
+from ..models.bbinn import BBINN
 
 
 CI_QUANTILES = {
@@ -15,11 +15,11 @@ CI_QUANTILES = {
 }
 
 
-def load_model(model_path: str, config: dict) -> BINN:
+def load_model(model_path: str, config: dict) -> BBINN:
     """Ucitava istrenirani model sa diska."""
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-    model = BINN(
+    model = BBINN(
         hidden_size=config["hidden_size"],
         dropout_p=config["dropout_p"],
     ).to(device)
@@ -77,7 +77,7 @@ def _traffic_light(alpha_mean: float, beta_mean: float) -> str:
 
 
 def predict_with_uncertainty(
-    model: BINN,
+    model: BBINN,
     times: np.ndarray,
     volumes: np.ndarray,
     n_samples: int = 100,
@@ -114,11 +114,15 @@ def predict_with_uncertainty(
     all_Ks       = np.array(all_Ks)
     all_betas    = np.array(all_betas)
 
+    # Model outputs normalized volumes (V/V0). Scale back to cm³.
+    v0        = float(volumes[0])
+    all_trajs = all_trajs * v0
+
     V_mean     = all_trajs.mean(axis=0)
     alpha_mean = float(all_alphas.mean())
     alpha_std  = float(all_alphas.std())
-    K_mean     = float(all_Ks.mean())
-    K_std      = float(all_Ks.std())
+    K_mean     = float(all_Ks.mean()) * v0
+    K_std      = float(all_Ks.std())  * v0
     beta_mean  = float(all_betas.mean())
     beta_std   = float(all_betas.std())
 
