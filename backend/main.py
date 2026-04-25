@@ -11,14 +11,14 @@ from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 sys.path.append(str(Path(__file__).parent.parent))
-#from models.bbinn import BBINN, predict_with_uncertainty
-#from backend.inference import load_model, extract_volume_from_nifti, build_features
-#from backend.schemas import (
-#    PredictionResponse,
-#    FeaturePredictRequest,
-#    DemoPatient,
-#    HealthResponse,
-#)
+from model.models.bbinn import BBINN, predict_with_uncertainty
+from backend.inference import load_model, extract_volume_from_nifti, build_features
+from backend.schemas import (
+   PredictionResponse,
+   FeaturePredictRequest,
+   DemoPatient,
+   HealthResponse,
+)
 
 # ─────────────────────────────────────────────────────────
 # App setup
@@ -38,11 +38,11 @@ app.add_middleware(
 )
 
 # Load model once at startup — not per request
-#MODEL: BBINN = None
+MODEL: BBINN = None
 DEMO_PATIENTS: dict = {}
 
 @app.on_event("startup")
 async def startup():
     global MODEL, DEMO_PATIENTS
-    #MODEL = load_model(path="training/outputs/bbinn_model.pt")
-    #DEMO_PATIENTS = _load_demo_patients()
+    MODEL = load_model(path="training/outputs/bbinn_model.pt")
+    DEMO_PATIENTS = _load_demo_patients()
