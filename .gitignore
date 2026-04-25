@@ -23,6 +23,7 @@ results/tables/
 .claude/
 *.docx
 *.txt
+!requirements.txt
 
 # OS
 .DS_Store
