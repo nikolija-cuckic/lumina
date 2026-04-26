@@ -55,7 +55,7 @@ export default function TrajectoryChart({ timepoints, activeCILevels }) {
     mode: 'lines',
     line: { color: '#2E6BE6', width: 2 },
     name: 'Srednja vrednost',
-    hovertemplate: 'Ned. %{x} — %{y:.2f} cm³<extra>Srednja vrednost</extra>',
+    hovertemplate: 'Ned. %{x} — %{y:.3f}<extra>Srednja vrednost</extra>',
   })
 
   // Observed points — white circle, blue border
@@ -72,7 +72,7 @@ export default function TrajectoryChart({ timepoints, activeCILevels }) {
       symbol: 'circle',
     },
     name: 'Izmereno',
-    hovertemplate: 'Ned. %{x} — %{y:.2f} cm³<extra>Izmereno</extra>',
+    hovertemplate: 'Ned. %{x} — %{y:.3f}<extra>Izmereno</extra>',
   })
 
   const layout = {
@@ -99,7 +99,7 @@ export default function TrajectoryChart({ timepoints, activeCILevels }) {
     },
     yaxis: {
       title: {
-        text: 'Zapremina (cm³)',
+        text: 'Normalizovani volumen (V/V₀)',
         font: { color: '#5A6A8A', size: 12 },
         standoff: 10,
       },

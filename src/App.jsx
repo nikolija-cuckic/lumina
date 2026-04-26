@@ -126,7 +126,7 @@ export default function App() {
     setActiveCILevels,
     runPrediction,
     loadDemo,
-  } = usePrediction(MOCK_RESPONSE)
+  } = usePrediction(null)
 
   // ── UI state ──────────────────────────────────────────────────────────────
   const [patientId,    setPatientId]    = useState('LUMIERE_042')
@@ -218,20 +218,12 @@ export default function App() {
 
           {/* Logo */}
           <div style={{ marginBottom: 24 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 3 }}>
-              <div style={{
-                width: 30, height: 30, borderRadius: 8, flexShrink: 0,
-                background: 'linear-gradient(135deg, #2E6BE6, #5BA4F5)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-              }}>
-                <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
-                  <path d="M9 2 L9 16 M5 6 L9 2 L13 6" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M5 10 Q3 13 5 16 L13 16 Q15 13 13 10 Z" fill="rgba(255,255,255,0.3)" stroke="#FFFFFF" strokeWidth="1.5" strokeLinejoin="round"/>
-                </svg>
-              </div>
-              <span style={{ fontSize: 19, fontWeight: 700, color: '#0F1C35', letterSpacing: '-0.5px' }}>Lumina</span>
-            </div>
-            <p style={{ fontSize: 12, color: '#5A6A8A', paddingLeft: 40 }}>Jasnoća kroz neizvesnost</p>
+            <img
+              src="/lumina_compact.svg"
+              alt="Lumina"
+              style={{ height: 36, display: 'block', marginBottom: 6 }}
+            />
+            <p style={{ fontSize: 12, color: '#5A6A8A' }}>Jasnoća kroz neizvesnost</p>
           </div>
 
           {/* Section title */}

@@ -114,15 +114,11 @@ def predict_with_uncertainty(
     all_Ks       = np.array(all_Ks)
     all_betas    = np.array(all_betas)
 
-    # Model outputs normalized volumes (V/V0). Scale back to cm³.
-    v0        = float(volumes[0])
-    all_trajs = all_trajs * v0
-
     V_mean     = all_trajs.mean(axis=0)
     alpha_mean = float(all_alphas.mean())
     alpha_std  = float(all_alphas.std())
-    K_mean     = float(all_Ks.mean()) * v0
-    K_std      = float(all_Ks.std())  * v0
+    K_mean     = float(all_Ks.mean())
+    K_std      = float(all_Ks.std())
     beta_mean  = float(all_betas.mean())
     beta_std   = float(all_betas.std())
 
