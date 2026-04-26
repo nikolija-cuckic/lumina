@@ -32,7 +32,7 @@ These are not generic population averages — the network learns a distinct (α,
 
 ### Architecture
 
-The model is a **Biologically Informed Neural Network (BINN)**: a compact feedforward network (4 → 64 → 64 → 3) that maps patient features to Gompertz parameters, which are then integrated through the ODE using `dopri5` (Dormand-Prince adaptive solver from `torchdiffeq`).
+The model is a **Biologically Informed Neural Network (BINN)**: a compact feedforward network (4 → 64 → 64 → 3) that maps patient features to Gompertz parameters, which are then integrated through the ODE using `dopri5` (Dormand-Prince adaptive solver from `torchdiffeq`).   
 
 ```
 Patient features [4]
