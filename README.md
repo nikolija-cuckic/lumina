@@ -2,7 +2,7 @@
 
 **Clarity through uncertainty** — a Bayesian Biology-Informed Neural Network for personalized glioblastoma growth prediction with quantified uncertainty.
 
-Built for the Google Nexus AI & ML in Practice Hackathon (2025).
+Built for the Google Nexus AI & ML in Practice Hackathon (2026).
 
 ---
 
